@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TextToolify</title>
+    <style>
+      .footer {
+         position: fixed;
+         left: 0;
+         bottom: 0;
+         width: 100%;
+         background-color: black;
+         color: white;
+         text-align: center;
+         display: block;
+      }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            padding: 1em;
+            text-align: center;
+            color: #fff;
+        }
+        section,#playarea {
+            max-width: 800px;
+            margin: 2em auto;
+            padding: 1em;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+        }
+        p {
+            line-height: 1.6;
+        }
+      </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">TextToolify</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#aboutus">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contactus">Contact us</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search" action="https://www.google.com/search" method="GET" target="_blank">
+              <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>      
+          </div>
+        </div>
+      </nav>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Text Toolify :</strong> Play with your texts !!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <header class="container">
+        <h1>TextToolify - Your Ultimate Text Utility Hub</h1>
+    </header>
+      <section class="container">
+        <p>TextToolify is a versatile online platform designed to streamline and enhance your text processing experience. Whether you're a writer, student, or just someone looking to manipulate text effortlessly, our suite of powerful tools is here to simplify the way you handle textual content.</p>
+        <h2>Key Features:</h2>
+        <ol>
+            <li><strong>Capitalize:</strong> Easily transform your text with a single click. Capitalize entire sentences or specific words to give your text the polished look it deserves.</li>
+            <li><strong>Remove New Line Characters:</strong> Say goodbye to unwanted line breaks. With TextToolify, eliminate new line characters and create seamless, continuous text for a cleaner presentation.</li>
+            <li><strong>Remove Punctuations:</strong> Tired of dealing with excessive punctuation marks? Our tool swiftly strips away unnecessary punctuation, leaving you with clear and concise text.</li>
+            <li><strong>Count Characters:</strong> Stay on top of your character count effortlessly. Whether you need to adhere to a specific limit or just want to keep track, TextToolify provides an instant character count to keep you informed.</li>
+        </ol>
+        <p><strong>Why TextToolify?</strong></p>
+        <ul>
+            <li><strong>User-Friendly Interface:</strong> Our intuitive design ensures a hassle-free experience, allowing you to manipulate text with ease.</li>
+            <li><strong>Instant Results:</strong> Enjoy real-time text transformations and character counts, saving you valuable time and effort.</li>
+            <li><strong>Access Anywhere, Anytime:</strong> TextToolify is entirely web-based, accessible from any device with an internet connection. Say goodbye to installations and downloads.</li>
+            <li><strong>Privacy and Security:</strong> Your text is your business. We prioritize your privacy and ensure the security of your data.</li>
+        </ul>
+        <p>TextToolify is your go-to destination for text transformations that are swift, efficient, and tailored to your needs. Whether you're crafting the perfect essay, working on a professional document, or just having fun with words, TextToolify is here to elevate your text editing game. Try it now and experience the simplicity of powerful text manipulation at your fingertips!</p>
+    </section>
+      <div class = "container">
+        <form action="/analyze" method="post" id = "playarea"> {% csrf_token %}
+            <div class="form-floating mb-3">
+            <textarea class="form-control" name="text" id="floatingTextareaDisabled" style="height: 100px"></textarea>
+            <label for="floatingTextareaDisabled">Enter your text</label>
+            </div>
+            <h5>Select any one of the following task :</h5>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="removepunc">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Remove punctuations
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="countchar">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Count Characters
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="newlineremover">
+              <label class="form-check-label" for="flexRadioDefault3">
+                Remove new line
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" value="changeupper">
+              <label class="form-check-label" for="flexRadioDefault4">
+                Change to Uppercase
+              </label>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      </div>
+      <section class="container" id="aboutus">
+        <h2>About Us</h2>
+        <p>Welcome to TextToolify, your go-to platform for effortless text manipulation. We're dedicated to simplifying your text editing experience with user-friendly tools.</p>
+        
+        <p>At TextToolify, we believe in efficiency. Our suite of features allows you to capitalize, remove new lines, eliminate punctuation, and count characters, all in one place.</p>
+        
+        <p>Join us on this journey as we redefine the way you interact with text. TextToolify – where simplicity meets precision.</p>
+    </section>
+    
+      <section class="container" id="contactus">
+        <h2>Contact Us</h2>
+        <p>Have questions or need assistance? We're here to help!</p>
+        
+        <p><strong>Phone:</strong> +91 9737936205</p>
+        
+        <p><strong>Email:</strong> <a href="mailto:sharmaanirudh545@gmail.com" style="color: #007bff;
+          text-decoration: none;
+          font-weight: bold;">sharmaanirudh545@gmail.com</a></p>
+        
+        <p>Feel free to reach out to us via phone or email for any inquiries, feedback, or support. Our dedicated team is committed to providing you with prompt and helpful assistance.</p>
+        
+        <p>We appreciate your trust in TextToolify and look forward to hearing from you!</p>
+    </section>
+    
+
+      <footer class="footer">
+        <div class="container">
+          <span class="text-light">&#169 2024 TextToolify </span>
+        </div>
+      </footer>
+      
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
